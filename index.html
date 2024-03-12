@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog clock</title>
+    <style>
+        body{
+            background-color: black;box-shadow: 0px 0px 50px rgb(0, 247, 255) inset;
+            padding: 20px;
+            height: 96vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .clock{
+            position: relative;
+            margin: auto;
+            height: 40vw;
+            width: 40vw;
+            background: url('https://i.pinimg.com/736x/6b/ea/30/6bea3036c38a229aab0987f25b06d8d1.jpg') no-repeat;
+            background-size: 100%;
+            border-radius: 50%;
+            box-shadow: 0px 0px 25px rgb(0, 255, 242),0px 0px 20px white;
+        }
+        #hour, #min, #sec{
+            position: absolute;
+            border-radius: 10px;
+            transform-origin: bottom;
+        }
+        #hour{
+            width: 1.8%;
+            height: 25%;
+            top: 25%;
+            left: 49%;
+            opacity: 0.8;
+            background: rgb(44, 191, 218);
+            box-shadow: 2px 2px 12px rgb(0, 195, 255),1px 1px 15px rgb(255, 255, 255);
+        } 
+        #min{
+            width: 1.6%;
+            height: 30%;
+            top: 19%;
+            left: 49%;
+            opacity: 0.8;
+            box-shadow: 2px 2px 12px whitesmoke,1px 1px 15px rgb(255, 255, 255);
+            background: white;
+        } 
+        #sec{
+            width: 1%;
+            height: 35%;
+            top: 15%;
+            left: 50%;
+            opacity: 0.8;
+            box-shadow: 2px 2px 12px greenyellow,1px 1px 15px rgb(255, 255, 255);
+            background: rgb(148, 231, 22);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-item">
+            <div class="clock">
+                <div id="hour"></div>
+                <div id="min"></div>
+                <div id="sec"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setInterval(() => {
+            let d = new Date(); // object of date()
+            let hr = d.getHours();
+            let min = d.getMinutes();
+            let sec = d.getSeconds();
+            let hr_rotation = 30 * hr + min / 2; // converting current time
+            let min_rotation = 6 * min;
+            let sec_rotation = 6 * sec;
+
+            document.getElementById('hour').style.transform = `rotate(${hr_rotation}deg)`;
+            document.getElementById('min').style.transform = `rotate(${min_rotation}deg)`;
+            document.getElementById('sec').style.transform = `rotate(${sec_rotation}deg)`;
+        }, 1000);
+    </script>
+</body>
+</html>
